@@ -23,7 +23,7 @@ class GamesController < ApplicationController
         redirect "/game/#{@game.id}"
       end
     else
-      redirect "/users/login"
+      redirect "/login"
     end
   end
 

@@ -1,1 +1,8 @@
-<h1>Insert the form to create a new instance of your model.</h1>
+<h1>Create A New Game Here!</h1>
+<form method="POST" action="/games">
+    <p>Name:<input type="text" name="name" id="name"><br>
+    <p>Console:<input type="text" name="console" id="console"><br>
+    <p>Release Date:<input type="number" name="release_date" id="release_date"><br>
+    <p>Game Details:<textarea id="details" rows="4" cols="30">Write game details here..</textarea>
+    <input type="submit" value="Submit">
+</form>
