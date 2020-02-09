@@ -1,6 +1,11 @@
 <h1>This is the Model's index page.</h1>
-<p><%@games.each do |game|%>
+<%if @games == nil%>
+  <p><a href="/games/new">Add A New Game</a>
+<%else%>
+  <p><%@games.each do |game|%>
     <%=game.name%>
-<%end%></p>
+  <%end%></p>
+  <p><a href="/games/new">Add A New Game</a>
+<%end%>
 
-<p><a href="/games/new">Add A New Game</a>
+
