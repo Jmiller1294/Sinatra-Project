@@ -10,14 +10,14 @@ class UsersController < ApplicationController
     if !logged_in?
       erb :"/users/create_new_user"
     else
-      redirect "/games/favorite_games"
+      redirect "/games"
     end
   end
     
 
   # creates a new user
   post "/signup" do
-    if params[:username] = nil || params[:email] = nil || params[:password] = nil
+    if params[:username] == nil || params[:email] == nil || params[:password] == nil
       redirect "/signup"
     else
       @user = User.new(username: params[:username], email: params[:email], password: params[:password])
@@ -39,7 +39,11 @@ class UsersController < ApplicationController
     user = User.find_by(username: params[:username])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-    erb :"/games/index"
+      redirect "/games"
+    else
+      redirect "/signup"
+    end
+    
   end
 
   get '/logout' do 

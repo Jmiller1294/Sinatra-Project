@@ -14,7 +14,7 @@ class GamesController < ApplicationController
   # creates a new game
   post "/games" do
     if logged_in?
-      if params[:name] = ""
+      if params[:name] == ""
         redirect "/games/new"
       else
         @game = current_user.games.build(name: params[:name], console: params[:console], release_date: params[:release_date], details: params[:details])
