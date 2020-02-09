@@ -2,7 +2,6 @@ class GamesController < ApplicationController
 
   # GET: /games
   get "/games" do
-    
       @games = Game.all
       erb :"/games/index"
   end
@@ -18,9 +17,12 @@ class GamesController < ApplicationController
       if params[:name] = nil||params[:console] = nil ||params[:release_date] = nil||params[:details] = nil
         redirect "/games/new"
       else
-        @game = Game.new(params[:name], params[:console], params[:release_date], params[:details])
-        @game.save
-        redirect "/game/#{@game.id}"
+        @game = current_user.games.build(name: params[:name], console: params[:console], release_date: params[:release_date], details: params[:details])
+        if @game.save
+          redirect "/games"
+        else
+          redirect "/games/new"
+        end
       end
     else
       redirect "/login"

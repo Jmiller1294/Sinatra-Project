@@ -6,9 +6,12 @@
     
 
     <div class="content">
-      <%
-    <a href="/signup">Sign Up</a>
-    <a href="/login">Log In</a>
+      <%if logged_in?%>
+        <a href="/games/new">Add A New Game</a>
+      <%else%>
+        <a href="/signup">Sign Up</a>
+        <a href="/login">Log In</a>
+      <%end%>
 
   </div>
 </div>
