@@ -2,8 +2,12 @@ class GamesController < ApplicationController
 
   # GET: /games
   get "/games" do
-      @games = Game.all
+    if logged_in?
+      @games = Game.find_by
       erb :"/games/index"
+    else
+      redirect "/login"
+    end
   end
 
   # display create game form 

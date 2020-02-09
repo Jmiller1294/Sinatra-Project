@@ -20,8 +20,7 @@ class UsersController < ApplicationController
     if params[:username] == nil || params[:email] == nil || params[:password] == nil
       redirect "/signup"
     else
-      @user = User.new(username: params[:username], email: params[:email], password: params[:password])
-      @user.save
+      @user = User.create(username: params[:username], email: params[:email], password: params[:password])
       session[:user_id] = @user.id
       redirect "/games"
     end
